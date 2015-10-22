@@ -1,32 +1,38 @@
 <!DOCTYPE web-app PUBLIC
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
-  
-  <!-- 过滤器配置 -->
-  <filter>
-  <filter-name>JFinal</filter-name>
-  <filter-class>com.jfinal.core.JFinalFilter</filter-class>
-  <init-param>
-  	<param-name>configClass</param-name>
-  	<param-value>nchu.weixin.admin.config.WxAdminConfig</param-value>
-  </init-param>
-  </filter>
-  <filter-mapping>
-  	<filter-name>JFinal</filter-name>
-  	<url-pattern>/*</url-pattern>
-  </filter-mapping>
-  
- <!--  servlet配置 -->
-  <servlet>
-    <servlet-name>WXAdminMPServlet</servlet-name>
-    <servlet-class>nchu.weixin.admin.controller.WXAdminMPServlet</servlet-class>
-  </servlet>
+	<display-name>Archetype Created Web Application</display-name>
 
-  <servlet-mapping>
-    <servlet-name>WXAdminMPServlet</servlet-name>
-    <url-pattern>/admin/weixin/validate/*</url-pattern>
-  </servlet-mapping>
+
+	<!-- 过滤器配置 -->
+	<filter>
+		<filter-name>JFinal</filter-name>
+		<filter-class>com.jfinal.core.JFinalFilter</filter-class>
+		<init-param>
+			<param-name>configClass</param-name>
+			<param-value>nchu.weixin.admin.config.WxAdminConfig</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>JFinal</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<listener>
+		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+	</listener>
+	<!-- servlet配置 -->
+	<servlet>
+		<servlet-name>WXAdminMPServlet</servlet-name>
+		<servlet-class>nchu.weixin.admin.controller.WXAdminMPServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>WXAdminMPServlet</servlet-name>
+		<url-pattern>/admin/weixin/validate/*</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

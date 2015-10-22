@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"  isELIgnored="false"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -7,7 +7,7 @@
 %>
 
 <!-- #section:basics/sidebar -->
-<div id="sidebar" class="sidebar                  responsive">
+<div id="sidebar" class="sidebar responsive">
     <script type="text/javascript">
         try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
     </script>
@@ -55,7 +55,7 @@
             </a>
             <ul class="submenu">
                 <li id="menu" class="">
-                    <a href="/App/Menu.aspx">
+                    <a href="${pageContext.request.contextPath}/Page/App/Menu.jsp">
                         <i class="menu-icon fa fa-reply"></i>
                         <span class="menu-text">自定义菜单</span>
                     </a>

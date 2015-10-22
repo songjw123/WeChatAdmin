@@ -1,11 +1,8 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"  isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<!-- bootstrap & fontawesome -->
 	<link rel="stylesheet" href="http://ace.zcdreams.com/assets/css/bootstrap.css" />
-	<link rel="stylesheet" href="plugins/fonts/font-awesome.css" />
+	<link rel="stylesheet" href="http://ace.zcdreams.com/assets/css/font-awesome.css" />
 	<!-- page specific plugin styles -->
 	<link rel="stylesheet" href="http://ace.zcdreams.com/assets/css/jquery-ui.css" />
     <link rel="stylesheet" href="http://ace.zcdreams.com/assets/css/jquery-ui.custom.css" />
@@ -248,7 +245,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <ul class="dropdown-menu dropdown-navbar">
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+                                        <img src="http://ace.zcdreams.com/assets/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
                                         <span class="msg-body">
                                             <span class="msg-title">
                                                 <span class="blue">Alex:</span>
@@ -265,7 +262,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
+                                        <img src="http://ace.zcdreams.com/assets/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
                                         <span class="msg-body">
                                             <span class="msg-title">
                                                 <span class="blue">Susan:</span>
@@ -282,7 +279,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
+                                        <img src="http://ace.zcdreams.com/assets/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
                                         <span class="msg-body">
                                             <span class="msg-title">
                                                 <span class="blue">Bob:</span>
@@ -299,7 +296,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
+                                        <img src="http://ace.zcdreams.com/assets/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
                                         <span class="msg-body">
                                             <span class="msg-title">
                                                 <span class="blue">Kate:</span>
@@ -316,7 +313,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                                 <li>
                                     <a href="#" class="clearfix">
-                                        <img src="/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
+                                        <img src="http://ace.zcdreams.com/assets/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
                                         <span class="msg-body">
                                             <span class="msg-title">
                                                 <span class="blue">Fred:</span>
@@ -344,7 +341,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="http://ace.zcdreams.com/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
                             Jason
@@ -673,7 +670,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                     <div class="row">
                         <div class="col-sm-12">
-                            <form method="post" action="Menu.aspx" id="form_Menu">
+                            <form method="post" action="admin/buildMenu" id="form_Menu">
 <div class="aspNetHidden">
 <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="lD8722rBr7X+aiBouIYxhrnKd1yDScQrf40Uv820C42CYas0di/vmy2H9rzOrIOpMrXy1UHC70C/PCVJD9mOD11l7TEb91gQiZB4YGNHIW1LkG9O7cpW07GmV6DvVkmsPyDACUWiWnDzOAwdw4j8DXee10Dg6LObrq9HKM1WQTu7rX4QyDTRHmvwID7CwJluqVQySyTQo8PzwQrZUEe5aUtLo9O+RUCPs0j7SeVGGAy5xKHybtm6IdtHji812bWyrQrIlTCchtmA5PAq9n1Z+B+qSw+19jcBXEHEN6I4NTc=" />
 </div>
@@ -1017,7 +1014,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!--[if !IE]> -->
 <script type="text/javascript">
-    window.jQuery || document.write("<script src='/assets/js/jquery.js'>" + "<" + "/script>");
+    window.jQuery || document.write("<script src='http://ace.zcdreams.com/assets/js/jquery.js'>" + "<" + "/script>");
 </script>
 
 <!-- <![endif]-->
@@ -1028,39 +1025,39 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </script>
 <![endif]-->
 <script type="text/javascript">
-    if ('ontouchstart' in document.documentElement) document.write("<script src='/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
+    if ('ontouchstart' in document.documentElement) document.write("<script src='http://ace.zcdreams.com/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
 </script>
-<script src="/assets/js/bootstrap.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/bootstrap.js"></script>
 
 <!-- page specific plugin scripts -->
 
 <!-- ace scripts -->
-<script src="/assets/js/ace/elements.scroller.js"></script>
-<script src="/assets/js/ace/elements.colorpicker.js"></script>
-<script src="/assets/js/ace/elements.fileinput.js"></script>
-<script src="/assets/js/ace/elements.typeahead.js"></script>
-<script src="/assets/js/ace/elements.wysiwyg.js"></script>
-<script src="/assets/js/ace/elements.spinner.js"></script>
-<script src="/assets/js/ace/elements.treeview.js"></script>
-<script src="/assets/js/ace/elements.wizard.js"></script>
-<script src="/assets/js/ace/elements.aside.js"></script>
-<script src="/assets/js/ace/ace.js"></script>
-<script src="/assets/js/ace/ace.ajax-content.js"></script>
-<script src="/assets/js/ace/ace.touch-drag.js"></script>
-<script src="/assets/js/ace/ace.sidebar.js"></script>
-<script src="/assets/js/ace/ace.sidebar-scroll-1.js"></script>
-<script src="/assets/js/ace/ace.submenu-hover.js"></script>
-<script src="/assets/js/ace/ace.widget-box.js"></script>
-<script src="/assets/js/ace/ace.settings.js"></script>
-<script src="/assets/js/ace/ace.settings-rtl.js"></script>
-<script src="/assets/js/ace/ace.settings-skin.js"></script>
-<script src="/assets/js/ace/ace.widget-on-reload.js"></script>
-<script src="/assets/js/ace/ace.searchbox-autocomplete.js"></script>
-    <script src="/assets/js/jquery-ui.js"></script>
-    <script src="/assets/js/jquery-ui.custom.js"></script>
-    <script src="/assets/js/jquery.ui.touch-punch.js"></script>
-    <script src="/assets/js/jquery-2.0.3.min.js"></script>
-    <script src="/assets/js/jquery-ui-1.10.3.full.min.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.scroller.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.colorpicker.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.fileinput.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.typeahead.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.wysiwyg.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.spinner.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.treeview.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.wizard.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/elements.aside.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.ajax-content.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.touch-drag.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.sidebar.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.sidebar-scroll-1.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.submenu-hover.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.widget-box.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.settings.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.settings-rtl.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.settings-skin.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.widget-on-reload.js"></script>
+<script src="http://ace.zcdreams.com/assets/js/ace/ace.searchbox-autocomplete.js"></script>
+    <script src="http://ace.zcdreams.com/assets/js/jquery-ui.js"></script>
+    <script src="http://ace.zcdreams.com/assets/js/jquery-ui.custom.js"></script>
+    <script src="http://ace.zcdreams.com/assets/js/jquery.ui.touch-punch.js"></script>
+    <script src="http://ace.zcdreams.com/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="http://ace.zcdreams.com/assets/js/jquery-ui-1.10.3.full.min.js"></script>
     <script>
         $(document).ready(function () {
             var alertDiv = $('#alertDiv');
@@ -1071,7 +1068,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $("#GetMenu").click(function () {
                 alertDiv.show();
                 $('#menuState').html('菜单获取中......');
-                $.get("/Ajax.ashx?action=GetMenu", function (data) {
+                $.get("${pageContext.request.contextPath}/admin/weixin/menu/getMenu", function (data) {
                     if (data.substr(0, 3) != "{\"e") {
                         var obj = JSON.parse(data);
                         var buttons = obj.menu.button;
@@ -1188,7 +1185,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 $.ajax({
                                     cache: false,
                                     type: "POST",
-                                    url: "/Ajax.ashx?action=SaveMenu",
+                                    url: "${pageContext.request.contextPath}/admin/weixin/menu/saveMenu",
                                     data: $('#form_Menu').serialize(),
                                     async: false,
                                     error: function (request) {
@@ -1231,7 +1228,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 $(this).dialog("close");
                                 alertDiv.show();
                                 $('#menuState').html('正在删除菜单中......');
-                                $.get("/Ajax.ashx?action=DelMenu", function (data) {
+                                $.get("${pageContext.request.contextPath}/admin/weixin/menu/deleteMenu", function (data) {
                                     if (data == 'ok') {
                                         $('#menuState').html('菜单删除成功！     页面还没刷新之前你可以点击“保存菜单”按钮恢复菜单！');
                                     } else {
