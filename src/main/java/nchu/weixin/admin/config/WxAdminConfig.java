@@ -3,6 +3,8 @@ package nchu.weixin.admin.config;
 import nchu.weixin.admin.config.router.WxRouter;
 import nchu.weixin.admin.controller.CustomController;
 import nchu.weixin.admin.model.Custom;
+import nchu.weixin.admin.model.Material;
+import nchu.weixin.admin.model.UserBind;
 import nchu.weixin.admin.model.WechatInfo;
 
 import com.jfinal.config.Constants;
@@ -62,9 +64,11 @@ public class WxAdminConfig extends JFinalConfig {
 		shiroPlugin.setUnauthorizedUrl("/login.do");
 		
 		me.add(shiroPlugin);
+		//添加表的映射
 		arp.addMapping("ott_custom", "CustomID", Custom.class);
 		arp.addMapping("ott_wechatinfo", "WID", WechatInfo.class);
-
+		arp.addMapping("ott_material", "MaterialID",Material.class);
+		arp.addMapping("ott_iddbind", "BindId",UserBind.class);
 		// TODO Auto-generated method stub
 
 	}

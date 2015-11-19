@@ -3,10 +3,13 @@ package nchu.weixin.admin.controller;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.jfinal.core.Controller;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -19,58 +22,34 @@ import me.chanjar.weixin.mp.api.WxMpServiceImpl;
 import me.chanjar.weixin.mp.bean.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.WxMpXmlOutMessage;
 import me.chanjar.weixin.mp.bean.WxMpXmlOutTextMessage;
+import nchu.weixin.GetWxService;
 import nchu.weixin.admin.config.ConfigDao;
 import nchu.weixin.admin.config.ConfigInfo;
 import nchu.weixin.admin.util.LogBuilder;
 
-public class WXAdminMPServlet extends HttpServlet {
+public class WxAdminMPController extends Controller {
 
 	protected WxMpInMemoryConfigStorage wxMpConfigStorage;
 	protected WxMpService wxMpService;
 	protected WxMpMessageRouter wxMpMessageRouter;
 
-	@Override
-	public void init() throws ServletException {
-		super.init();
-		ConfigDao configDao = new ConfigDao();
-		ConfigInfo configInfo = configDao.GetConfig();
-		wxMpConfigStorage = new WxMpInMemoryConfigStorage();
-		wxMpConfigStorage.setAppId(configInfo.getWeChatAppID()); // 设置微信公众号的appid
-		wxMpConfigStorage.setSecret(configInfo.getWeChatAppSecret()); // 设置微信公众号的app
-																		// corpSecret
-		wxMpConfigStorage.setToken(configInfo.getWeChatToken()); // 设置微信公众号的token
-		wxMpConfigStorage.setAesKey(configInfo.getWeChatAESKey()); // 设置微信公众号的EncodingAESKey
 
-		wxMpService = new WxMpServiceImpl();
-		wxMpService.setWxMpConfigStorage(wxMpConfigStorage);
-
-		WxMpMessageHandler handler = new WxMpMessageHandler() {
-			@Override
-			public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
-					Map<String, Object> context, WxMpService wxMpService,
-					WxSessionManager sessionManager) throws WxErrorException {
-				WxMpXmlOutTextMessage m = WxMpXmlOutMessage.TEXT()
-						.content("测试加密消息").fromUser(wxMessage.getToUserName())
-						.toUser(wxMessage.getFromUserName()).build();
-				return m;
-			}
-		};
-
-		wxMpMessageRouter = new WxMpMessageRouter(wxMpService);
-		wxMpMessageRouter.rule().async(false).content("哈哈") // 拦截内容为“哈哈”的消息
-				.handler(handler).end();
-
-	}
-
-	public void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void index() {
 		try {
+			HttpServletResponse response=getResponse();
+			HttpServletRequest request=getRequest();
+			ServletContext context = request.getSession().getServletContext();
+			Map<Integer,WxMpService> services=(Map<Integer, WxMpService>)context .getAttribute("services");
+			String namespace;
+			namespace = getPara();
+			GetWxService geService=new GetWxService(services);
+			wxMpService= geService.initService(namespace);
 			response.setContentType("text/html;charset=utf-8");
 			response.setStatus(HttpServletResponse.SC_OK);
 
-			String signature = request.getParameter("signature");
-			String nonce = request.getParameter("nonce");
-			String timestamp = request.getParameter("timestamp");
+			String signature = getRequest().getParameter("signature");
+			String nonce =getRequest().getParameter("nonce");
+			String timestamp = getRequest().getParameter("timestamp");
 
 			if (!wxMpService.checkSignature(timestamp, nonce, signature)) {
 				// 消息签名不正确，说明不是公众平台发过来的消息
@@ -116,12 +95,5 @@ public class WXAdminMPServlet extends HttpServlet {
 			e.printStackTrace();
 			LogBuilder.writeToLog(e.getMessage());
 		}
-
 	}
-
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
-	}
-
 }

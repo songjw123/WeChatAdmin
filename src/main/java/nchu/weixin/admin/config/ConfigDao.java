@@ -1,16 +1,18 @@
 package nchu.weixin.admin.config;
 
-import java.util.ResourceBundle;
+import nchu.weixin.admin.model.WechatInfo;
 
 public class ConfigDao {
-	public ConfigInfo GetConfig() {
-
+	private WechatInfo info;
+	
+	public ConfigInfo GetConfig(Integer customID) {
 		ConfigInfo Config = new ConfigInfo();
-		ResourceBundle res = ResourceBundle.getBundle("config");
-		Config.setWeChatAppID(res.getString("WeChatAppID"));
-		Config.setWeChatAppSecret(res.getString("WeChatAppSecret"));
-		Config.setWeChatToken(res.getString("WeChatToken"));
-		Config.setWeChatAESKey(res.getString("WeChatAESKey"));
+		
+		info = info.dao.findById(customID);
+		Config.setWeChatAppID(info.getStr("WeChatID"));
+		Config.setWeChatAppSecret(info.getStr("WeChatSecret"));
+		Config.setWeChatToken(info.getStr("WeChatToken"));
+		Config.setWeChatAESKey(info.getStr("WeChatAESKey"));
 		return Config;
 	}
 }

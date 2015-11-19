@@ -3,48 +3,68 @@ package nchu.weixin.admin.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import nchu.weixin.GetWxService;
-import nchu.weixin.admin.model.Custom;
-
 import me.chanjar.weixin.common.bean.WxMenu;
 import me.chanjar.weixin.common.bean.WxMenu.WxMenuButton;
+import me.chanjar.weixin.common.exception.WxErrorException;
+import nchu.weixin.admin.model.Custom;
+import nchu.weixin.admin.util.LogBuilder;
 
-import com.jfinal.core.Controller;
+import com.jfinal.kit.StrKit;
 
-public class WxMenuController extends Controller {
+public class WxMenuController extends BaseWxController {
 
 	private WxMenu menu;
-	private GetWxService getService;
+
+	public WxMenuController() {
+
+		this.menu = new WxMenu();
+	}
 
 	public void saveMenu() {
 
-		Custom attribute = (Custom) getSession().getAttribute("user");
-		menu = new WxMenu();
-		menu.setButtons(getButton(0, 2));
-		System.out.println(menu.toJson());
-		
+		try {
+			menu.setButtons(getButton(0, 3));
+			System.out.println(menu.toJson());
+			// 从session获取wxMpService
+			service.menuCreate(menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogBuilder.writeToLog(this.getClass().getName() + ":"
+					+ e.getMessage());
+		}
+
 	}
 
 	public void getMenu() {
 
-		System.out.println("获取菜单");
+		try {
+			menu = service.menuGet();
+			System.out.println(menu.toJson());
+		} catch (WxErrorException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void deleteMenu() {
-
-		System.out.println("删除菜单");
+		try {
+			service.menuDelete();
+		} catch (WxErrorException e) {
+			e.printStackTrace();
+		}
 	}
 
-	private List<WxMenuButton> getButtons(int index) {
-		List<WxMenuButton> buttons = null;
-		return null;
-	}
-
+	/**
+	 * 获取前台用户编辑菜单的信息
+	 * 
+	 * @param btn_index
+	 * @param maxSize
+	 * @return
+	 */
 	private List<WxMenuButton> getButton(int btn_index, int maxSize) {
 		String baseParaName = "";
-		if (maxSize == 2) {
+		if (maxSize == 3) {
 			baseParaName = "menu.button[";
-		} else if (maxSize == 4) {
+		} else if (maxSize == 5) {
 			baseParaName = "menu.button[" + btn_index + "].sub_button[";
 		} else {
 			throw new RuntimeException("maxSize=" + maxSize + "非法");
@@ -57,17 +77,22 @@ public class WxMenuController extends Controller {
 			String type = getPara(baseParaName + i + "].type");
 			String url = getPara(baseParaName + i + "].url");
 			String key = getPara(baseParaName + i + "].key");
+
 			button.setName(name);
 			button.setType(type);
-			button.setUrl(url);
-			button.setKey(key);
-			if (maxSize == 2) {
-				button.setSubButtons(getButton(i, 4));
+			if (!StrKit.isBlank(url)) {
+				button.setUrl(url);
 			}
-			buttons.add(button);
+			if (!StrKit.isBlank(key)) {
+				button.setKey(key);
+			}
+			if (maxSize == 3) {
+				button.setSubButtons(getButton(i, 5));
+			}
+			if (!StrKit.isBlank(name) && !StrKit.isBlank(type)
+					&& (StrKit.isBlank(url) ^ StrKit.isBlank(key)))
+				buttons.add(button);
 		}
-
-		
 		return buttons;
 	}
 }

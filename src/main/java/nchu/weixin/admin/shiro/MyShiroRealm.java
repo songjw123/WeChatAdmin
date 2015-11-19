@@ -8,22 +8,22 @@ import org.apache.shiro.realm.Realm;
 public class MyShiroRealm implements Realm {
 
 	@Override
-	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken arg0)
-			throws AuthenticationException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public boolean supports(AuthenticationToken arg0) {
+	public boolean supports(AuthenticationToken token) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public AuthenticationInfo getAuthenticationInfo(AuthenticationToken token)
+			throws AuthenticationException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

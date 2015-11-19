@@ -2,9 +2,12 @@
  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 <web-app>
+
 	<display-name>Archetype Created Web Application</display-name>
-
-
+	<context-param>
+		<param-name>weixin_mode</param-name>
+		<param-value>single</param-value>
+	</context-param>
 	<!-- 过滤器配置 -->
 	<filter>
 		<filter-name>JFinal</filter-name>
@@ -21,17 +24,10 @@
 	<listener>
 		<listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
 	</listener>
+	<listener>
+		<listener-class>nchu.weixin.admin.listener.AppListener</listener-class>
+	</listener>
 	<!-- servlet配置 -->
-	<servlet>
-		<servlet-name>WXAdminMPServlet</servlet-name>
-		<servlet-class>nchu.weixin.admin.controller.WXAdminMPServlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>WXAdminMPServlet</servlet-name>
-		<url-pattern>/admin/weixin/validate/*</url-pattern>
-	</servlet-mapping>
-
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
 	</welcome-file-list>
